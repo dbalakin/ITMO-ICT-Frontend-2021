@@ -10,7 +10,11 @@
     import ResultTickets from "@/components/ResultTickets";
     export default {
         name: "Main",
-        components: {ResultTickets, MainSearch}
+        components: {ResultTickets, MainSearch},
+
+        mounted() {
+            this.$store.dispatch('getTickets')
+        },
     }
 </script>
 

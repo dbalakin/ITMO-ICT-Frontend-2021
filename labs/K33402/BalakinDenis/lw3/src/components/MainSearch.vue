@@ -42,7 +42,6 @@
                         url+= `?start.city_like=`+ this.form.start
                     }
                 }
-
                 fetch(url, {
                     method: 'get',
                 })

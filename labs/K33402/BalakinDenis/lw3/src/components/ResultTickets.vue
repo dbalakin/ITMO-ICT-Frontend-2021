@@ -23,7 +23,7 @@
                     </div>
                     <div class="price d-flex justify-content-between align-items-center">
                         <span>Цена за билет: {{el.price}}</span>
-                        <button class="btn text-white bg-orange" >Купить билет</button>
+                        <button @click="onBuy(el, profile)" class="btn text-white bg-orange" >Купить билет</button>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,13 @@
         computed: {
             ...mapGetters([
                 'tickets',
+                'profile',
             ])
+        },
+        methods: {
+            onBuy(el, profile) {
+                this.$store.dispatch('onBuy', {ticket: el, user: profile.id})
+            }
         }
 
     }

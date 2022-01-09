@@ -1,30 +1,40 @@
 <template>
     <section class="d-flex flex-column align-items-start w-25">
-        <h3>Балакин Денис</h3>
+        <h3>{{profile.username}}</h3>
         <img class="w-100 avatar mb-2" src="../assets/аватар.jpg" alt="аватар">
         <p class="mb-1">
             <svg>
                 <use xlink:href='#ruble'></use>
             </svg>
-            Баланс: 100к рублей
+            Баланс: {{profile.balance}}к рублей
         </p>
         <p class="mb-1">
             <svg>
                 <use xlink:href='#coins'></use>
             </svg>
-            Бонусы: 10000</p>
+            Бонусы: {{profile.bonus}}</p>
         <p class="mb-1">
             <svg>
                 <use xlink:href='#plane'></use>
             </svg>
-            Количество полетов: 15
+            Количество полетов: {{profile.count}}
         </p>
     </section>
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
-        name: "ProfileInfo"
+        name: "ProfileInfo",
+        computed: {
+            ...mapGetters([
+                'profile',
+            ])
+        },
+        mounted() {
+            this.$store.dispatch('getProfile',this.profile.id)
+        }
     }
 </script>
 
